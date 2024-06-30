@@ -1,5 +1,7 @@
 mod btc_utils;
 mod base58;
+mod wallet;
+mod wallets;
 
 use btc_utils::{generate_wif, create_public_hash160};
 
