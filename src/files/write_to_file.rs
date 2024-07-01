@@ -1,6 +1,6 @@
-use crate::btc_utils::make_dir;
 use crate::config::KEYS_PATH;
 use std::fs::OpenOptions;
+use super::make_dir;
 use std::io::Write;
 
 pub fn write_to_file(filename: &str, content: &str) {

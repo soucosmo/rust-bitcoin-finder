@@ -1,10 +1,12 @@
 use btc_utils::{
-    read_last_key,
-    write_to_file,
-    write_last_key,
     public_key_to_address,
     increment_and_format_key,
     private_key_to_public_key
+};
+use files::{
+    read_last_key,
+    write_to_file,
+    write_last_key,
 };
 use std::collections::BTreeMap;
 use btc_utils::generate_wif;
@@ -16,6 +18,7 @@ mod wallets;
 mod base58;
 mod wallet;
 mod config;
+mod files;
 
 fn main() {
     // Carrega as carteiras
