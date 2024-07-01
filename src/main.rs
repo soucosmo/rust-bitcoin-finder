@@ -1,9 +1,13 @@
-use btc_utils::private_key_to_public_key;
-use btc_utils::public_key_to_address;
-use std::fs::{OpenOptions, File};
+use btc_utils::{
+    read_last_key,
+    write_to_file,
+    write_last_key,
+    public_key_to_address,
+    increment_and_format_key,
+    private_key_to_public_key
+};
 use std::collections::BTreeMap;
 use btc_utils::generate_wif;
-use std::io::{Write, Read};
 use num_bigint::BigInt;
 use num_traits::Num;
 
@@ -12,64 +16,18 @@ mod wallets;
 mod base58;
 mod wallet;
 
-const LAST_KEY_FILE: &str = "last_key.txt";
 const CORRESPONDING_KEYS_FILE: &str = "corresponding_keys.txt";
-
-fn increment_and_format_key(key: &mut BigInt) -> String {
-    // Incrementa a chave
-    *key += 1;
-
-    // Converte a chave para hexadecimal e formata para 64 caracteres
-    let mut pkey_hex = format!("{:x}", key);
-    while pkey_hex.len() < 64 {
-        pkey_hex = format!("0{}", pkey_hex);
-    }
-
-    pkey_hex
-}
-
-fn write_to_file(filename: &str, content: &str) {
-    let mut file = OpenOptions::new()
-        .create(true)
-        .append(true)
-        .open(filename)
-        .unwrap();
-    writeln!(file, "{}", content).unwrap();
-}
-
-fn write_last_key(key: &BigInt) {
-    let mut file = File::create(LAST_KEY_FILE).unwrap();
-    let key_hex = format!("{:064x}", key);
-    file.write_all(key_hex.as_bytes()).unwrap();
-}
-
-fn read_last_key() -> Option<BigInt> {
-    if let Ok(mut file) = File::open(LAST_KEY_FILE) {
-        let mut key_hex = String::new();
-        if file.read_to_string(&mut key_hex).is_ok() {
-            match BigInt::from_str_radix(&key_hex, 16) {
-                Ok(key) => return Some(key),
-                Err(_) => return None,
-            }
-        }
-    }
-    None
-}
 
 fn main() {
     // Carrega as carteiras
     let wallets_map: BTreeMap<u8, wallet::Wallet> = wallets::wallets();
-
-    // Exibe as opções de wallets disponíveis
-    println!("Wallets disponíveis:");
-    for (key, wallet) in &wallets_map {
-        println!("{}. Endereço: {}", key, wallet.address);
-    }
+    let min = wallets_map.keys().min().unwrap();
+    let max = wallets_map.keys().max().unwrap();
 
     // Solicita ao usuário que selecione uma wallet
     let mut user_choice = String::new();
     loop {
-        println!("Selecione o número da wallet para realizar a comparação:");
+        println!("Selecione o número da wallet para realizar a comparação: ({min} - {max})");
         user_choice.clear();
         std::io::stdin().read_line(&mut user_choice).expect("Falha ao ler a linha");
         let user_choice: u8 = match user_choice.trim().parse() {
@@ -100,31 +58,34 @@ fn main() {
 
     // Temporizador para salvar o último hexadecimal a cada 5 minutos
     let mut last_save_time = std::time::Instant::now();
-
+    let mut count = 0;
     loop {
         // Converte a chave privada atual para hexadecimal formatado
         let priv_key_hex = format!("{:064x}", priv_key);
 
         // Gera WIF a partir da chave privada atual
-        match generate_wif(&priv_key_hex) {
-            Ok(wif) => println!("WIF: {}", wif),
-            Err(e) => println!("Erro ao gerar WIF: {}", e),
-        }
-
+        let wif_key = match generate_wif(&priv_key_hex) {
+            Ok(wif) => wif,                      // Retorna wif se Ok
+            Err(e) => {
+                println!("Erro ao gerar WIF: {}", e);
+                return;  // Retorna vazio se Err, ou pode tratar de outra maneira
+            },
+        };
+        println!("Contador de chaves: {}", count);
+        count += 1;
         // Converte chave privada para chave pública
         match private_key_to_public_key(&priv_key) {
             Ok(public_key) => {
                 // Converte chave pública para endereço Bitcoin
                 match public_key_to_address(&public_key) {
                     Ok(address) => {
-                        println!("Endereço Bitcoin: {}", address);
-
                         // Verifica se o endereço corresponde à wallet selecionada
                         if address == selected_wallet.address {
                             println!("Correspondência encontrada! Endereço: {}", address);
+                            let data_hora = chrono::Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
                             let content = format!(
-                                "Chave privada: {}\nWIF: {}\nEndereço Bitcoin: {}\n",
-                                priv_key_hex, generate_wif(&priv_key_hex).unwrap(), address
+                                "Chave privada: {}\nWIF: {}\nEndereço Bitcoin: {}\nData e Hora: {}\n",
+                                priv_key_hex, wif_key, address, data_hora
                             );
                             write_to_file(CORRESPONDING_KEYS_FILE, &content);
                             break;
