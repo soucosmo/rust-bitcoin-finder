@@ -15,8 +15,7 @@ mod btc_utils;
 mod wallets;
 mod base58;
 mod wallet;
-
-const CORRESPONDING_KEYS_FILE: &str = "corresponding_keys.txt";
+mod config;
 
 fn main() {
     // Carrega as carteiras
@@ -28,8 +27,11 @@ fn main() {
     let mut user_choice = String::new();
     loop {
         println!("Selecione o número da wallet para realizar a comparação: ({min} - {max})");
+
         user_choice.clear();
+
         std::io::stdin().read_line(&mut user_choice).expect("Falha ao ler a linha");
+
         let user_choice: u8 = match user_choice.trim().parse() {
             Ok(num) => num,
             Err(_) => {
@@ -50,7 +52,7 @@ fn main() {
     let selected_wallet = wallets_map.get(&user_choice).unwrap();
 
     // Inicializa a chave privada a partir do arquivo ou com um valor pequeno para demonstração
-    let mut priv_key = read_last_key().unwrap_or_else(|| BigInt::from(1));
+    let mut priv_key = read_last_key(user_choice).unwrap_or_else(|| BigInt::from(1));
 
     // Temporizador para calcular chaves por segundo
     let start_time = std::time::Instant::now();
@@ -87,7 +89,12 @@ fn main() {
                                 priv_key_hex, wif_key, address, data_hora
                             );
 
-                            write_to_file(CORRESPONDING_KEYS_FILE, &content);
+                            let file_name = format!("{user_choice}_found.txt");
+
+                            write_to_file(
+                                &file_name,
+                                &content
+                            );
 
                             break;
                     },
@@ -104,7 +111,7 @@ fn main() {
 
         // Verifica se 5 minutos se passaram para salvar o último hexadecimal
         if last_save_time.elapsed() >= std::time::Duration::from_secs(300) {
-            write_last_key(&priv_key);
+            write_last_key(&priv_key, user_choice);
             last_save_time = std::time::Instant::now();
         }
     }
@@ -117,7 +124,7 @@ fn main() {
     println!("Chaves por segundo: {:.2}", keys_per_second);
 
     // Salva o último hexadecimal ao finalizar
-    write_last_key(&priv_key);
+    write_last_key(&priv_key, user_choice);
 
     println!("Processo concluído.");
 }

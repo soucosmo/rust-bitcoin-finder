@@ -7,12 +7,14 @@ mod write_to_file;
 mod write_last_key;
 mod generate_wif;
 mod decode_hex;
+mod make_dir;
 mod hash160;
 mod sha256;
 
 
 pub use decode_hex::decode_hex;
 pub use hash160::hash160;
+pub use make_dir::make_dir;
 pub use sha256::sha256;
 pub use generate_wif::generate_wif;
 pub use public_key_to_address::public_key_to_address;
