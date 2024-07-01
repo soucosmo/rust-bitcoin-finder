@@ -67,30 +67,31 @@ fn main() {
         let wif_key = match generate_wif(&priv_key_hex) {
             Ok(wif) => wif,                      // Retorna wif se Ok
             Err(e) => {
-                println!("Erro ao gerar WIF: {}", e);
+                eprintln!("Erro ao gerar WIF: {}", e);
                 return;  // Retorna vazio se Err, ou pode tratar de outra maneira
             },
         };
-        println!("Contador de chaves: {}", count);
+        //println!("Contador de chaves: {}", count);
         count += 1;
         // Converte chave privada para chave pública
         match private_key_to_public_key(&priv_key) {
             Ok(public_key) => {
                 // Converte chave pública para endereço Bitcoin
                 match public_key_to_address(&public_key) {
-                    Ok(address) => {
+                    Ok(address) if address == selected_wallet.address => {
                         // Verifica se o endereço corresponde à wallet selecionada
-                        if address == selected_wallet.address {
-                            println!("Correspondência encontrada! Endereço: {}", address);
+                            eprintln!("Correspondência encontrada! Endereço: {}", address);
                             let data_hora = chrono::Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
                             let content = format!(
                                 "Chave privada: {}\nWIF: {}\nEndereço Bitcoin: {}\nData e Hora: {}\n",
                                 priv_key_hex, wif_key, address, data_hora
                             );
+
                             write_to_file(CORRESPONDING_KEYS_FILE, &content);
+
                             break;
-                        }
                     },
+                    Ok(_address) => {},
                     Err(e) => eprintln!("Erro ao converter chave pública para endereço: {}", e),
                 }
             },
