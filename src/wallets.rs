@@ -1,11 +1,11 @@
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use super::wallet::Wallet;
 
 
-pub fn wallets() -> HashMap<u8, Wallet> {
-    HashMap::from([
+pub fn wallets() -> BTreeMap<u8, Wallet> {
+    BTreeMap::from([
         (
-            0,
+            1,
             Wallet {
                 min: "0x1".to_string(),
                 max: "0x1".to_string(),
@@ -14,7 +14,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            1,
+            2,
             Wallet {
                 min: "0x2".to_string(),
                 max: "0x3".to_string(),
@@ -23,7 +23,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            2,
+            3,
             Wallet {
                 min: "0x4".to_string(),
                 max: "0x7".to_string(),
@@ -32,7 +32,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            3,
+            4,
             Wallet {
                 min: "0x8".to_string(),
                 max: "0xf".to_string(),
@@ -41,7 +41,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            4,
+            5,
             Wallet {
                 min: "0x10".to_string(),
                 max: "0x1f".to_string(),
@@ -50,7 +50,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            5,
+            6,
             Wallet {
                 min: "0x20".to_string(),
                 max: "0x3f".to_string(),
@@ -59,7 +59,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            6,
+            7,
             Wallet {
                 min: "0x40".to_string(),
                 max: "0x7f".to_string(),
@@ -68,7 +68,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            7,
+            8,
             Wallet {
                 min: "0x80".to_string(),
                 max: "0xff".to_string(),
@@ -77,7 +77,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            8,
+            9,
             Wallet {
                 min: "0x100".to_string(),
                 max: "0x1ff".to_string(),
@@ -86,7 +86,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            9,
+            10,
             Wallet {
                 min: "0x200".to_string(),
                 max: "0x3ff".to_string(),
@@ -95,7 +95,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            10,
+            11,
             Wallet {
                 min: "0x400".to_string(),
                 max: "0x7ff".to_string(),
@@ -104,7 +104,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            11,
+            12,
             Wallet {
                 min: "0x800".to_string(),
                 max: "0xfff".to_string(),
@@ -113,7 +113,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            12,
+            13,
             Wallet {
                 min: "0x1000".to_string(),
                 max: "0x1fff".to_string(),
@@ -122,7 +122,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            13,
+            14,
             Wallet {
                 min: "0x2000".to_string(),
                 max: "0x3fff".to_string(),
@@ -131,7 +131,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            14,
+            15,
             Wallet {
                 min: "0x4000".to_string(),
                 max: "0x7fff".to_string(),
@@ -140,7 +140,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            15,
+            16,
             Wallet {
                 min: "0x8000".to_string(),
                 max: "0xffff".to_string(),
@@ -149,7 +149,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            16,
+            17,
             Wallet {
                 min: "0x10000".to_string(),
                 max: "0x1ffff".to_string(),
@@ -158,7 +158,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            17,
+            18,
             Wallet {
                 min: "0x20000".to_string(),
                 max: "0x3ffff".to_string(),
@@ -167,7 +167,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            18,
+            19,
             Wallet {
                 min: "0x40000".to_string(),
                 max: "0x7ffff".to_string(),
@@ -176,7 +176,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            19,
+            20,
             Wallet {
                 min: "0x80000".to_string(),
                 max: "0xfffff".to_string(),
@@ -185,7 +185,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            20,
+            21,
             Wallet {
                 min: "0x100000".to_string(),
                 max: "0x1fffff".to_string(),
@@ -194,7 +194,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            21,
+            22,
             Wallet {
                 min: "0x200000".to_string(),
                 max: "0x3fffff".to_string(),
@@ -203,7 +203,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            22,
+            23,
             Wallet {
                 min: "0x400000".to_string(),
                 max: "0x7fffff".to_string(),
@@ -212,7 +212,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            23,
+            24,
             Wallet {
                 min: "0x800000".to_string(),
                 max: "0xffffff".to_string(),
@@ -221,7 +221,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            24,
+            25,
             Wallet {
                 min: "0x1000000".to_string(),
                 max: "0x1ffffff".to_string(),
@@ -230,7 +230,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            25,
+            26,
             Wallet {
                 min: "0x2000000".to_string(),
                 max: "0x3ffffff".to_string(),
@@ -239,7 +239,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            26,
+            27,
             Wallet {
                 min: "0x4000000".to_string(),
                 max: "0x7ffffff".to_string(),
@@ -248,7 +248,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            27,
+            28,
             Wallet {
                 min: "0x8000000".to_string(),
                 max: "0xfffffff".to_string(),
@@ -257,7 +257,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            28,
+            29,
             Wallet {
                 min: "0x10000000".to_string(),
                 max: "0x1fffffff".to_string(),
@@ -266,7 +266,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            29,
+            30,
             Wallet {
                 min: "0x20000000".to_string(),
                 max: "0x3fffffff".to_string(),
@@ -275,7 +275,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            30,
+            31,
             Wallet {
                 min: "0x40000000".to_string(),
                 max: "0x7fffffff".to_string(),
@@ -284,7 +284,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            31,
+            32,
             Wallet {
                 min: "0x80000000".to_string(),
                 max: "0xffffffff".to_string(),
@@ -293,7 +293,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            32,
+            33,
             Wallet {
                 min: "0x100000000".to_string(),
                 max: "0x1ffffffff".to_string(),
@@ -302,7 +302,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            33,
+            34,
             Wallet {
                 min: "0x200000000".to_string(),
                 max: "0x3ffffffff".to_string(),
@@ -311,7 +311,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            34,
+            35,
             Wallet {
                 min: "0x400000000".to_string(),
                 max: "0x7ffffffff".to_string(),
@@ -320,7 +320,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            35,
+            36,
             Wallet {
                 min: "0x800000000".to_string(),
                 max: "0xfffffffff".to_string(),
@@ -329,7 +329,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            36,
+            37,
             Wallet {
                 min: "0x1000000000".to_string(),
                 max: "0x1fffffffff".to_string(),
@@ -338,7 +338,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            37,
+            38,
             Wallet {
                 min: "0x2000000000".to_string(),
                 max: "0x3fffffffff".to_string(),
@@ -347,7 +347,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            38,
+            39,
             Wallet {
                 min: "0x4000000000".to_string(),
                 max: "0x7fffffffff".to_string(),
@@ -356,7 +356,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            39,
+            40,
             Wallet {
                 min: "0x8000000000".to_string(),
                 max: "0xffffffffff".to_string(),
@@ -365,7 +365,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            40,
+            41,
             Wallet {
                 min: "0x10000000000".to_string(),
                 max: "0x1ffffffffff".to_string(),
@@ -374,7 +374,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            41,
+            42,
             Wallet {
                 min: "0x20000000000".to_string(),
                 max: "0x3ffffffffff".to_string(),
@@ -383,7 +383,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            42,
+            43,
             Wallet {
                 min: "0x40000000000".to_string(),
                 max: "0x7ffffffffff".to_string(),
@@ -392,7 +392,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            43,
+            44,
             Wallet {
                 min: "0x80000000000".to_string(),
                 max: "0xfffffffffff".to_string(),
@@ -401,7 +401,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            44,
+            45,
             Wallet {
                 min: "0x100000000000".to_string(),
                 max: "0x1fffffffffff".to_string(),
@@ -410,7 +410,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            45,
+            46,
             Wallet {
                 min: "0x200000000000".to_string(),
                 max: "0x3fffffffffff".to_string(),
@@ -419,7 +419,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            46,
+            47,
             Wallet {
                 min: "0x400000000000".to_string(),
                 max: "0x7fffffffffff".to_string(),
@@ -428,7 +428,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            47,
+            48,
             Wallet {
                 min: "0x800000000000".to_string(),
                 max: "0xffffffffffff".to_string(),
@@ -437,7 +437,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            48,
+            49,
             Wallet {
                 min: "0x1000000000000".to_string(),
                 max: "0x1ffffffffffff".to_string(),
@@ -446,7 +446,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            49,
+            50,
             Wallet {
                 min: "0x2000000000000".to_string(),
                 max: "0x3ffffffffffff".to_string(),
@@ -455,7 +455,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            50,
+            51,
             Wallet {
                 min: "0x4000000000000".to_string(),
                 max: "0x7ffffffffffff".to_string(),
@@ -464,7 +464,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            51,
+            52,
             Wallet {
                 min: "0x8000000000000".to_string(),
                 max: "0xfffffffffffff".to_string(),
@@ -473,7 +473,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            52,
+            53,
             Wallet {
                 min: "0x10000000000000".to_string(),
                 max: "0x1fffffffffffff".to_string(),
@@ -482,7 +482,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            53,
+            54,
             Wallet {
                 min: "0x20000000000000".to_string(),
                 max: "0x3fffffffffffff".to_string(),
@@ -491,7 +491,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            54,
+            55,
             Wallet {
                 min: "0x40000000000000".to_string(),
                 max: "0x7fffffffffffff".to_string(),
@@ -500,7 +500,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            55,
+            56,
             Wallet {
                 min: "0x80000000000000".to_string(),
                 max: "0xffffffffffffff".to_string(),
@@ -509,7 +509,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            56,
+            57,
             Wallet {
                 min: "0x100000000000000".to_string(),
                 max: "0x1ffffffffffffff".to_string(),
@@ -518,7 +518,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            57,
+            58,
             Wallet {
                 min: "0x200000000000000".to_string(),
                 max: "0x3ffffffffffffff".to_string(),
@@ -527,7 +527,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            58,
+            59,
             Wallet {
                 min: "0x400000000000000".to_string(),
                 max: "0x7ffffffffffffff".to_string(),
@@ -536,7 +536,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            59,
+            60,
             Wallet {
                 min: "0x800000000000000".to_string(),
                 max: "0xfffffffffffffff".to_string(),
@@ -545,7 +545,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            60,
+            61,
             Wallet {
                 min: "0x1000000000000000".to_string(),
                 max: "0x1fffffffffffffff".to_string(),
@@ -554,7 +554,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            61,
+            62,
             Wallet {
                 min: "0x2000000000000000".to_string(),
                 max: "0x3fffffffffffffff".to_string(),
@@ -563,7 +563,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            62,
+            63,
             Wallet {
                 min: "0x4000000000000000".to_string(),
                 max: "0x7fffffffffffffff".to_string(),
@@ -572,7 +572,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            63,
+            64,
             Wallet {
                 min: "0x8000000000000000".to_string(),
                 max: "0xffffffffffffffff".to_string(),
@@ -581,7 +581,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            64,
+            65,
             Wallet {
                 min: "0x10000000000000000".to_string(),
                 max: "0x1ffffffffffffffff".to_string(),
@@ -590,7 +590,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            65,
+            66,
             Wallet {
                 min: "0x20000000000000000".to_string(),
                 max: "0x3ffffffffffffffff".to_string(),
@@ -599,7 +599,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            66,
+            67,
             Wallet {
                 min: "0x40000000000000000".to_string(),
                 max: "0x7ffffffffffffffff".to_string(),
@@ -608,7 +608,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            67,
+            68,
             Wallet {
                 min: "0x80000000000000000".to_string(),
                 max: "0xfffffffffffffffff".to_string(),
@@ -617,7 +617,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            68,
+            69,
             Wallet {
                 min: "0x100000000000000000".to_string(),
                 max: "0x1fffffffffffffffff".to_string(),
@@ -626,7 +626,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            69,
+            70,
             Wallet {
                 min: "0x200000000000000000".to_string(),
                 max: "0x3fffffffffffffffff".to_string(),
@@ -635,7 +635,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            70,
+            71,
             Wallet {
                 min: "0x400000000000000000".to_string(),
                 max: "0x7fffffffffffffffff".to_string(),
@@ -644,7 +644,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            71,
+            72,
             Wallet {
                 min: "0x800000000000000000".to_string(),
                 max: "0xffffffffffffffffff".to_string(),
@@ -653,7 +653,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            72,
+            73,
             Wallet {
                 min: "0x1000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffff".to_string(),
@@ -662,7 +662,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            73,
+            74,
             Wallet {
                 min: "0x2000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffff".to_string(),
@@ -671,7 +671,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            74,
+            75,
             Wallet {
                 min: "0x4000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffff".to_string(),
@@ -680,7 +680,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            75,
+            76,
             Wallet {
                 min: "0x8000000000000000000".to_string(),
                 max: "0xfffffffffffffffffff".to_string(),
@@ -689,7 +689,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            76,
+            77,
             Wallet {
                 min: "0x10000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffff".to_string(),
@@ -698,7 +698,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            77,
+            78,
             Wallet {
                 min: "0x20000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffff".to_string(),
@@ -707,7 +707,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            78,
+            79,
             Wallet {
                 min: "0x40000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffff".to_string(),
@@ -716,7 +716,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            79,
+            80,
             Wallet {
                 min: "0x80000000000000000000".to_string(),
                 max: "0xffffffffffffffffffff".to_string(),
@@ -725,7 +725,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            80,
+            81,
             Wallet {
                 min: "0x100000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffff".to_string(),
@@ -734,7 +734,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            81,
+            82,
             Wallet {
                 min: "0x200000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffffff".to_string(),
@@ -743,7 +743,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            82,
+            83,
             Wallet {
                 min: "0x400000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffffff".to_string(),
@@ -752,7 +752,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            83,
+            84,
             Wallet {
                 min: "0x800000000000000000000".to_string(),
                 max: "0xfffffffffffffffffffff".to_string(),
@@ -761,7 +761,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            84,
+            85,
             Wallet {
                 min: "0x1000000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffffff".to_string(),
@@ -770,7 +770,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            85,
+            86,
             Wallet {
                 min: "0x2000000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffffff".to_string(),
@@ -779,7 +779,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            86,
+            87,
             Wallet {
                 min: "0x4000000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffffff".to_string(),
@@ -788,7 +788,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            87,
+            88,
             Wallet {
                 min: "0x8000000000000000000000".to_string(),
                 max: "0xffffffffffffffffffffff".to_string(),
@@ -797,7 +797,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            88,
+            89,
             Wallet {
                 min: "0x10000000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffffff".to_string(),
@@ -806,7 +806,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            89,
+            90,
             Wallet {
                 min: "0x20000000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffffffff".to_string(),
@@ -815,7 +815,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            90,
+            91,
             Wallet {
                 min: "0x40000000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffffffff".to_string(),
@@ -824,7 +824,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            91,
+            92,
             Wallet {
                 min: "0x80000000000000000000000".to_string(),
                 max: "0xfffffffffffffffffffffff".to_string(),
@@ -833,7 +833,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            92,
+            93,
             Wallet {
                 min: "0x100000000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffffffff".to_string(),
@@ -842,7 +842,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            93,
+            94,
             Wallet {
                 min: "0x200000000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffffffff".to_string(),
@@ -851,7 +851,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            94,
+            95,
             Wallet {
                 min: "0x400000000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffffffff".to_string(),
@@ -860,7 +860,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            95,
+            96,
             Wallet {
                 min: "0x800000000000000000000000".to_string(),
                 max: "0xffffffffffffffffffffffff".to_string(),
@@ -869,7 +869,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            96,
+            97,
             Wallet {
                 min: "0x1000000000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffffffff".to_string(),
@@ -878,7 +878,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            97,
+            98,
             Wallet {
                 min: "0x2000000000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffffffffff".to_string(),
@@ -887,7 +887,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            98,
+            99,
             Wallet {
                 min: "0x4000000000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffffffffff".to_string(),
@@ -896,7 +896,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            99,
+            100,
             Wallet {
                 min: "0x8000000000000000000000000".to_string(),
                 max: "0xfffffffffffffffffffffffff".to_string(),
@@ -905,7 +905,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            100,
+            101,
             Wallet {
                 min: "0x10000000000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffffffffff".to_string(),
@@ -914,7 +914,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            101,
+            102,
             Wallet {
                 min: "0x20000000000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffffffffff".to_string(),
@@ -923,7 +923,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            102,
+            103,
             Wallet {
                 min: "0x40000000000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffffffffff".to_string(),
@@ -932,7 +932,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            103,
+            104,
             Wallet {
                 min: "0x80000000000000000000000000".to_string(),
                 max: "0xffffffffffffffffffffffffff".to_string(),
@@ -941,7 +941,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            104,
+            105,
             Wallet {
                 min: "0x100000000000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffffffffff".to_string(),
@@ -950,7 +950,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            105,
+            106,
             Wallet {
                 min: "0x200000000000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffffffffffff".to_string(),
@@ -959,7 +959,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            106,
+            107,
             Wallet {
                 min: "0x400000000000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffffffffffff".to_string(),
@@ -968,7 +968,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            107,
+            108,
             Wallet {
                 min: "0x800000000000000000000000000".to_string(),
                 max: "0xfffffffffffffffffffffffffff".to_string(),
@@ -977,7 +977,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            108,
+            109,
             Wallet {
                 min: "0x1000000000000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffffffffffff".to_string(),
@@ -986,7 +986,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            109,
+            110,
             Wallet {
                 min: "0x2000000000000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffffffffffff".to_string(),
@@ -995,7 +995,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            110,
+            111,
             Wallet {
                 min: "0x4000000000000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffffffffffff".to_string(),
@@ -1004,7 +1004,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            111,
+            112,
             Wallet {
                 min: "0x8000000000000000000000000000".to_string(),
                 max: "0xffffffffffffffffffffffffffff".to_string(),
@@ -1013,7 +1013,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            112,
+            113,
             Wallet {
                 min: "0x10000000000000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffffffffffff".to_string(),
@@ -1022,7 +1022,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            113,
+            114,
             Wallet {
                 min: "0x20000000000000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffffffffffffff".to_string(),
@@ -1031,7 +1031,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            114,
+            115,
             Wallet {
                 min: "0x40000000000000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffffffffffffff".to_string(),
@@ -1040,7 +1040,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            115,
+            116,
             Wallet {
                 min: "0x80000000000000000000000000000".to_string(),
                 max: "0xfffffffffffffffffffffffffffff".to_string(),
@@ -1049,7 +1049,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            116,
+            117,
             Wallet {
                 min: "0x100000000000000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffffffffffffff".to_string(),
@@ -1058,7 +1058,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            117,
+            118,
             Wallet {
                 min: "0x200000000000000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffffffffffffff".to_string(),
@@ -1067,7 +1067,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            118,
+            119,
             Wallet {
                 min: "0x400000000000000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffffffffffffff".to_string(),
@@ -1076,7 +1076,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            119,
+            120,
             Wallet {
                 min: "0x800000000000000000000000000000".to_string(),
                 max: "0xffffffffffffffffffffffffffffff".to_string(),
@@ -1085,7 +1085,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            120,
+            121,
             Wallet {
                 min: "0x1000000000000000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffffffffffffff".to_string(),
@@ -1094,7 +1094,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            121,
+            122,
             Wallet {
                 min: "0x2000000000000000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffffffffffffffff".to_string(),
@@ -1103,7 +1103,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            122,
+            123,
             Wallet {
                 min: "0x4000000000000000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffffffffffffffff".to_string(),
@@ -1112,7 +1112,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            123,
+            124,
             Wallet {
                 min: "0x8000000000000000000000000000000".to_string(),
                 max: "0xfffffffffffffffffffffffffffffff".to_string(),
@@ -1121,7 +1121,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            124,
+            125,
             Wallet {
                 min: "0x10000000000000000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffffffffffffffff".to_string(),
@@ -1130,7 +1130,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            125,
+            126,
             Wallet {
                 min: "0x20000000000000000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffffffffffffffff".to_string(),
@@ -1139,7 +1139,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            126,
+            127,
             Wallet {
                 min: "0x40000000000000000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffffffffffffffff".to_string(),
@@ -1148,7 +1148,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            127,
+            128,
             Wallet {
                 min: "0x80000000000000000000000000000000".to_string(),
                 max: "0xffffffffffffffffffffffffffffffff".to_string(),
@@ -1157,7 +1157,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            128,
+            129,
             Wallet {
                 min: "0x100000000000000000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffffffffffffffff".to_string(),
@@ -1166,7 +1166,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            129,
+            130,
             Wallet {
                 min: "0x200000000000000000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffffffffffffffffff".to_string(),
@@ -1175,7 +1175,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            130,
+            131,
             Wallet {
                 min: "0x400000000000000000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffffffffffffffffff".to_string(),
@@ -1184,7 +1184,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            131,
+            132,
             Wallet {
                 min: "0x800000000000000000000000000000000".to_string(),
                 max: "0xfffffffffffffffffffffffffffffffff".to_string(),
@@ -1193,7 +1193,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            132,
+            133,
             Wallet {
                 min: "0x1000000000000000000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffffffffffffffffff".to_string(),
@@ -1202,7 +1202,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            133,
+            134,
             Wallet {
                 min: "0x2000000000000000000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffffffffffffffffff".to_string(),
@@ -1211,7 +1211,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            134,
+            135,
             Wallet {
                 min: "0x4000000000000000000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffffffffffffffffff".to_string(),
@@ -1220,7 +1220,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            135,
+            136,
             Wallet {
                 min: "0x8000000000000000000000000000000000".to_string(),
                 max: "0xffffffffffffffffffffffffffffffffff".to_string(),
@@ -1229,7 +1229,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            136,
+            137,
             Wallet {
                 min: "0x10000000000000000000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffffffffffffffffff".to_string(),
@@ -1238,7 +1238,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            137,
+            138,
             Wallet {
                 min: "0x20000000000000000000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffffffffffffffffffff".to_string(),
@@ -1247,7 +1247,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            138,
+            139,
             Wallet {
                 min: "0x40000000000000000000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffffffffffffffffffff".to_string(),
@@ -1256,7 +1256,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            139,
+            140,
             Wallet {
                 min: "0x80000000000000000000000000000000000".to_string(),
                 max: "0xfffffffffffffffffffffffffffffffffff".to_string(),
@@ -1265,7 +1265,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            140,
+            141,
             Wallet {
                 min: "0x100000000000000000000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffffffffffffffffffff".to_string(),
@@ -1274,7 +1274,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            141,
+            142,
             Wallet {
                 min: "0x200000000000000000000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffffffffffffffffffff".to_string(),
@@ -1283,7 +1283,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            142,
+            143,
             Wallet {
                 min: "0x400000000000000000000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffffffffffffffffffff".to_string(),
@@ -1292,7 +1292,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            143,
+            144,
             Wallet {
                 min: "0x800000000000000000000000000000000000".to_string(),
                 max: "0xffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1301,7 +1301,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            144,
+            145,
             Wallet {
                 min: "0x1000000000000000000000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1310,7 +1310,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            145,
+            146,
             Wallet {
                 min: "0x2000000000000000000000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1319,7 +1319,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            146,
+            147,
             Wallet {
                 min: "0x4000000000000000000000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1328,7 +1328,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            147,
+            148,
             Wallet {
                 min: "0x8000000000000000000000000000000000000".to_string(),
                 max: "0xfffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1337,7 +1337,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            148,
+            149,
             Wallet {
                 min: "0x10000000000000000000000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1346,7 +1346,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            149,
+            150,
             Wallet {
                 min: "0x20000000000000000000000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1355,7 +1355,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            150,
+            151,
             Wallet {
                 min: "0x40000000000000000000000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1364,7 +1364,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            151,
+            152,
             Wallet {
                 min: "0x80000000000000000000000000000000000000".to_string(),
                 max: "0xffffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1373,7 +1373,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            152,
+            153,
             Wallet {
                 min: "0x100000000000000000000000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1382,7 +1382,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            153,
+            154,
             Wallet {
                 min: "0x200000000000000000000000000000000000000".to_string(),
                 max: "0x3ffffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1391,7 +1391,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            154,
+            155,
             Wallet {
                 min: "0x400000000000000000000000000000000000000".to_string(),
                 max: "0x7ffffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1400,7 +1400,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            155,
+            156,
             Wallet {
                 min: "0x800000000000000000000000000000000000000".to_string(),
                 max: "0xfffffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1409,7 +1409,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            156,
+            157,
             Wallet {
                 min: "0x1000000000000000000000000000000000000000".to_string(),
                 max: "0x1fffffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1418,7 +1418,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            157,
+            158,
             Wallet {
                 min: "0x2000000000000000000000000000000000000000".to_string(),
                 max: "0x3fffffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1427,7 +1427,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            158,
+            159,
             Wallet {
                 min: "0x4000000000000000000000000000000000000000".to_string(),
                 max: "0x7fffffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1436,7 +1436,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            159,
+            160,
             Wallet {
                 min: "0x8000000000000000000000000000000000000000".to_string(),
                 max: "0xffffffffffffffffffffffffffffffffffffffff".to_string(),
@@ -1445,7 +1445,7 @@ pub fn wallets() -> HashMap<u8, Wallet> {
             },
         ),
         (
-            160,
+            161,
             Wallet {
                 min: "0x10000000000000000000000000000000000000000".to_string(),
                 max: "0x1ffffffffffffffffffffffffffffffffffffffff".to_string(),

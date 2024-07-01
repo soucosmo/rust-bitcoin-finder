@@ -12,3 +12,12 @@ secp256k1 = { version = "0.21", features = ["rand"] }
 sha2 = "0.10"
 k256 = "0.10"
 bitcoin = "0.27"
+
+
+[profile.release]
+strip = true
+lto = true
+panic = "abort"
+codegen-units = 1
+target-cpu = "native"
+tune-cpu = "machine"
