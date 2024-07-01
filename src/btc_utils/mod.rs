@@ -1,4 +1,5 @@
 mod private_key_to_public_key;
+mod increment_and_format_key;
 mod public_key_to_address;
 mod create_public_hash160;
 mod generate_wif;
@@ -14,3 +15,4 @@ pub use create_public_hash160::create_public_hash160;
 pub use generate_wif::generate_wif;
 pub use public_key_to_address::public_key_to_address;
 pub use private_key_to_public_key::private_key_to_public_key;
+pub use increment_and_format_key::increment_and_format_key;
