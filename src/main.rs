@@ -52,7 +52,7 @@ fn main() {
     let selected_wallet = wallets_map.get(&user_choice).unwrap();
 
     // Inicializa a chave privada a partir do arquivo ou com um valor pequeno para demonstração
-    let mut priv_key = read_last_key().unwrap_or_else(|| BigInt::from(1));
+    let mut priv_key = read_last_key(user_choice).unwrap_or_else(|| BigInt::from(1));
 
     // Temporizador para calcular chaves por segundo
     let start_time = std::time::Instant::now();
