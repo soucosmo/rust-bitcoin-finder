@@ -13,6 +13,8 @@ sha2 = "0.10"
 k256 = "0.10"
 bitcoin = "0.27"
 chrono = "0.4.38"
+num_cpus = "1.13.1"
+hex = "0.4"
 
 [profile.release]
 strip = true
