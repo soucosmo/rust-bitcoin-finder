@@ -1,7 +1,7 @@
 use secp256k1::{Secp256k1, SecretKey};
 use super::{decode_hex, hash160};
 use std::num::ParseIntError;
-use super::generate_wif;
+
 
 pub fn create_public_hash160(priv_key_int: &str) -> Result<Vec<u8>, ParseIntError> {
     println!("priv_key_int: {}", priv_key_int);
