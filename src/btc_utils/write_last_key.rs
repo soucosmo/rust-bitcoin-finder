@@ -1,12 +1,25 @@
-use std::fs::File;
-use std::io::Write;
-
+use crate::btc_utils::make_dir;
+use crate::config::KEYS_PATH;
 use num_bigint::BigInt;
+use std::path::Path;
+use std::io::Write;
+use std::fs::File;
 
-const LAST_KEY_FILE: &str = "last_key.txt";
 
-pub fn write_last_key(key: &BigInt) {
-    let mut file = File::create(LAST_KEY_FILE).unwrap();
+pub fn write_last_key(key: &BigInt, user_choice: u8) {
+    make_dir(KEYS_PATH);
+
+    let file = format!(
+        "{}/{}_last.txt",
+        KEYS_PATH,
+        user_choice,
+    );
+
+    let file = Path::new(&file);
+
+    let mut file = File::create(file).unwrap();
+
     let key_hex = format!("{:064x}", key);
+
     file.write_all(key_hex.as_bytes()).unwrap();
 }
