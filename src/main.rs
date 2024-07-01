@@ -1,10 +1,10 @@
 use btc_utils::private_key_to_public_key;
 use btc_utils::public_key_to_address;
-use btc_utils::generate_wif;
-use num_bigint::BigInt;
-use std::collections::HashMap;
 use std::fs::{OpenOptions, File};
+use std::collections::BTreeMap;
+use btc_utils::generate_wif;
 use std::io::{Write, Read};
+use num_bigint::BigInt;
 use num_traits::Num;
 
 mod btc_utils;
@@ -58,7 +58,7 @@ fn read_last_key() -> Option<BigInt> {
 
 fn main() {
     // Carrega as carteiras
-    let wallets_map: HashMap<u8, wallet::Wallet> = wallets::wallets();
+    let wallets_map: BTreeMap<u8, wallet::Wallet> = wallets::wallets();
 
     // Exibe as opções de wallets disponíveis
     println!("Wallets disponíveis:");

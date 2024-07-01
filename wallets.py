@@ -173,7 +173,7 @@ for i in range(0, len(wallets)):
     mi = hex(mi)
     ma = hex(ma)
 
-    lista += "(%s, Wallet {\n" % (i)
+    lista += "(%s, Wallet {\n" % (i + 1)
     lista += f'min: "{mi}".to_string(),\n'
     lista += f'max: "{ma}".to_string(),\n'
     lista += f'address: "{wallets[i]}".to_string(),\n'
