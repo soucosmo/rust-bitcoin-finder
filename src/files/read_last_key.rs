@@ -1,8 +1,8 @@
-use crate::btc_utils::make_dir;
 use crate::config::KEYS_PATH;
 use num_bigint::BigInt;
 use std::path::Path;
 use num_traits::Num;
+use super::make_dir;
 use std::fs::File;
 use std::io::Read;
 
