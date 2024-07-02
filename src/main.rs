@@ -9,9 +9,7 @@ use files::{
 };
 use std::collections::BTreeMap;
 use btc_utils::generate_wif;
-use num_bigint::BigInt;
 use std::fmt::Write;
-
 mod btc_utils;
 mod wallets;
 mod wallet;
@@ -53,7 +51,7 @@ fn main() {
     let selected_wallet = wallets_map.get(&user_choice).unwrap();
 
     // Inicializa a chave privada a partir do arquivo ou com um valor pequeno para demonstração
-    let mut priv_key = read_last_key(user_choice).unwrap_or_else(|| BigInt::from(1));
+    let mut priv_key = read_last_key(user_choice).unwrap_or_else(|| selected_wallet.min.clone());
 
     // Temporizador para calcular chaves por segundo
     let start_time = std::time::Instant::now();
