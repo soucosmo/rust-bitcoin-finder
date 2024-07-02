@@ -19,6 +19,7 @@ mod base58;
 mod wallet;
 mod config;
 mod files;
+use crate::base58::decode;
 
 fn main() {
     // Carrega as carteiras
@@ -67,6 +68,11 @@ fn main() {
 
     // necessário converter o endereço bitcoin para a chave hexadecimal
     // assim a comparação irá reduzir algumas etapas.
+
+    let address_base58 = selected_wallet.address.clone();
+
+    let address_hex = decode(&address_base58.as_str());
+
     loop {
         // Converte a chave privada atual para hexadecimal formatado
         let priv_key_hex = format!("{:064x}", priv_key);
@@ -81,6 +87,9 @@ fn main() {
                     // Verifica se o endereço corresponde à wallet selecionada
 
                     Ok(address) if address == selected_wallet.address => {
+                        println!("Public key original: {:?}", public_key);
+
+                        println!("Public key selecionado: {:?}", address_hex);
                         // Gera WIF a partir da chave privada atual
                         let wif_key = match generate_wif(&priv_key_hex) {
                             Ok(wif) => wif,                      // Retorna wif se Ok
