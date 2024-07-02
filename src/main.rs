@@ -12,6 +12,7 @@ use std::collections::BTreeMap;
 use btc_utils::generate_wif;
 use num_bigint::BigInt;
 use num_traits::Num;
+use std::fmt::Write;
 
 mod btc_utils;
 mod wallets;
@@ -65,12 +66,16 @@ fn main() {
     let mut last_save_time = std::time::Instant::now();
     let mut count = 0;
 
+    // Converte a chave privada uma vez para hexadecimal formatado fora do loop
+    let mut priv_key_hex = String::with_capacity(64); // Capacidade inicial para otimizar alocação
+
+    // Converte a chave privada atual para hexadecimal formatado usando buffers
+    write!(&mut priv_key_hex, "{:064x}", priv_key).expect("Erro ao escrever em String");
+    // Dentro do loop, você pode reutilizar a variável priv_key_hex usando buffers
+
     // necessário converter o endereço bitcoin para a chave hexadecimal
     // assim a comparação irá reduzir algumas etapas.
     loop {
-        // Converte a chave privada atual para hexadecimal formatado
-        let priv_key_hex = format!("{:064x}", priv_key);
-
         //println!("Contador de chaves: {}", count);
         count += 1;
         // Converte chave privada para chave pública
