@@ -1,5 +1,3 @@
-import json
-
 wallets = [
   "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
   "1CUNEBjYrCn2y1SdiUMohaKUi4wpP326Lb",
@@ -170,12 +168,9 @@ for i in range(0, len(wallets)):
     mi = (2 ** i)
     ma = (2 ** (i + 1)) - 1
 
-    mi = hex(mi)
-    ma = hex(ma)
-
     lista += "(%s, Wallet {\n" % (i + 1)
-    lista += f'min: "{mi}".to_string(),\n'
-    lista += f'max: "{ma}".to_string(),\n'
+    lista += f'min: get_bigint("{mi}"),\n'
+    lista += f'max: get_bigint("{ma}"),\n'
     lista += f'address: "{wallets[i]}".to_string(),\n'
     lista += f'status: 1,\n'
     lista += '}),\n'
