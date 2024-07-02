@@ -64,18 +64,13 @@ fn main() {
     // Temporizador para salvar o último hexadecimal a cada 5 minutos
     let mut last_save_time = std::time::Instant::now();
     let mut count = 0;
+
+    // necessário converter o endereço bitcoin para a chave hexadecimal
+    // assim a comparação irá reduzir algumas etapas.
     loop {
         // Converte a chave privada atual para hexadecimal formatado
         let priv_key_hex = format!("{:064x}", priv_key);
 
-        // Gera WIF a partir da chave privada atual
-        let wif_key = match generate_wif(&priv_key_hex) {
-            Ok(wif) => wif,                      // Retorna wif se Ok
-            Err(e) => {
-                eprintln!("Erro ao gerar WIF: {}", e);
-                return;  // Retorna vazio se Err, ou pode tratar de outra maneira
-            },
-        };
         //println!("Contador de chaves: {}", count);
         count += 1;
         // Converte chave privada para chave pública
@@ -83,8 +78,17 @@ fn main() {
             Ok(public_key) => {
                 // Converte chave pública para endereço Bitcoin
                 match public_key_to_address(&public_key) {
+                    // Verifica se o endereço corresponde à wallet selecionada
+
                     Ok(address) if address == selected_wallet.address => {
-                        // Verifica se o endereço corresponde à wallet selecionada
+                        // Gera WIF a partir da chave privada atual
+                        let wif_key = match generate_wif(&priv_key_hex) {
+                            Ok(wif) => wif,                      // Retorna wif se Ok
+                            Err(e) => {
+                                eprintln!("Erro ao gerar WIF: {}", e);
+                                return;  // Retorna vazio se Err, ou pode tratar de outra maneira
+                            },
+                        };
                             eprintln!("Correspondência encontrada! Endereço: {}", address);
                             let data_hora = chrono::Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
                             let content = format!(
