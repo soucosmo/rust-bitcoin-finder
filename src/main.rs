@@ -1,6 +1,5 @@
 use btc_utils::{
     public_key_to_address,
-    increment_and_format_key,
     private_key_to_public_key
 };
 use files::{
@@ -11,12 +10,10 @@ use files::{
 use std::collections::BTreeMap;
 use btc_utils::generate_wif;
 use num_bigint::BigInt;
-use num_traits::Num;
 use std::fmt::Write;
 
 mod btc_utils;
 mod wallets;
-mod base58;
 mod wallet;
 mod config;
 mod files;
@@ -118,7 +115,9 @@ fn main() {
         }
 
         // Incrementa a chave privada para a próxima iteração
-        priv_key = BigInt::from_str_radix(&increment_and_format_key(&mut priv_key), 16).unwrap();
+
+        priv_key += 1;
+
         key_count += 1;
 
         // Verifica se 5 minutos se passaram para salvar o último hexadecimal
