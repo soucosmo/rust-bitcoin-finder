@@ -1,8 +1,8 @@
-use num_bigint::BigInt;
+use num_bigint::BigUint;
 
 pub struct Wallet {
-    pub min: BigInt,
-    pub max: BigInt,
+    pub min: BigUint,
+    pub max: BigUint,
     pub address: String,
     pub status: u8,
 }
