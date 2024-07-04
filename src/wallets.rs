@@ -1,10 +1,10 @@
-use super::wallet::Wallet;
-use num_bigint::BigInt;
 use std::collections::BTreeMap;
+use super::wallet::Wallet;
+use num_bigint::BigUint;
 use std::str::FromStr;
 
 pub fn wallets() -> BTreeMap<u8, Wallet> {
-    let get_bigint = |n| BigInt::from_str(n).expect("Erro obter BigInt");
+    let get_bigint = |n| BigUint::from_str(n).expect("Erro obter BigInt");
 
     BTreeMap::from([
         (

@@ -1,20 +1,19 @@
-use btc_utils::{
-    public_key_to_address,
-    private_key_to_public_key
-};
+use std::collections::BTreeMap;
 use files::{
     read_last_key,
     write_to_file,
     write_last_key,
 };
-use std::collections::BTreeMap;
-use btc_utils::generate_wif;
-use std::fmt::Write;
-mod btc_utils;
 mod wallets;
 mod wallet;
 mod config;
 mod files;
+mod utils;
+use utils::{
+    get_target_hash_from_address,
+    verify_address_with_murmur,
+    generate_wif,
+};
 
 fn main() {
     // Carrega as carteiras
@@ -51,7 +50,7 @@ fn main() {
     let selected_wallet = wallets_map.get(&user_choice).unwrap();
 
     // Inicializa a chave privada a partir do arquivo ou com um valor pequeno para demonstração
-    let mut priv_key = read_last_key(user_choice).unwrap_or_else(|| selected_wallet.min.clone());
+    let min = read_last_key(user_choice).unwrap_or_else(|| selected_wallet.min.clone());
 
     // Temporizador para calcular chaves por segundo
     let start_time = std::time::Instant::now();
@@ -59,64 +58,40 @@ fn main() {
 
     // Temporizador para salvar o último hexadecimal a cada 5 minutos
     let mut last_save_time = std::time::Instant::now();
-    let mut count = 0;
 
-    // Converte a chave privada uma vez para hexadecimal formatado fora do loop
-    let mut priv_key_hex = String::with_capacity(64); // Capacidade inicial para otimizar alocação
-
-    // Converte a chave privada atual para hexadecimal formatado usando buffers
-    write!(&mut priv_key_hex, "{:064x}", priv_key).expect("Erro ao escrever em String");
-    // Dentro do loop, você pode reutilizar a variável priv_key_hex usando buffers
-
-    // necessário converter o endereço bitcoin para a chave hexadecimal
+    // necessário converter o endereço bitcoin para a target hash
     // assim a comparação irá reduzir algumas etapas.
-    loop {
+    let address_target_hash = get_target_hash_from_address(&selected_wallet.address);
+
+    for priv_key in num_iter::range_inclusive(min, selected_wallet.max.clone()) {
         //println!("Contador de chaves: {}", count);
-        count += 1;
-        // Converte chave privada para chave pública
-        match private_key_to_public_key(&priv_key) {
-            Ok(public_key) => {
-                // Converte chave pública para endereço Bitcoin
-                match public_key_to_address(&public_key) {
-                    // Verifica se o endereço corresponde à wallet selecionada
-
-                    Ok(address) if address == selected_wallet.address => {
-                        // Gera WIF a partir da chave privada atual
-                        let wif_key = match generate_wif(&priv_key_hex) {
-                            Ok(wif) => wif,                      // Retorna wif se Ok
-                            Err(e) => {
-                                eprintln!("Erro ao gerar WIF: {}", e);
-                                return;  // Retorna vazio se Err, ou pode tratar de outra maneira
-                            },
-                        };
-                            eprintln!("Correspondência encontrada! Endereço: {}", address);
-                            let data_hora = chrono::Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
-                            let content = format!(
-                                "Chave privada: {}\nWIF: {}\nEndereço Bitcoin: {}\nData e Hora: {}\n",
-                                priv_key_hex, wif_key, address, data_hora
-                            );
-
-                            let file_name = format!("{user_choice}_found.txt");
-
-                            write_to_file(
-                                &file_name,
-                                &content
-                            );
-
-                            break;
-                    },
-                    Ok(_address) => {},
-                    Err(e) => eprintln!("Erro ao converter chave pública para endereço: {}", e),
-                }
-            },
-            Err(e) => eprintln!("Erro ao converter chave privada para chave pública: {}", e),
-        }
-
-        // Incrementa a chave privada para a próxima iteração
-
-        priv_key += 1;
 
         key_count += 1;
+
+        if verify_address_with_murmur(&priv_key, address_target_hash) {
+            eprintln!("Correspondência encontrada! Endereço: {}", selected_wallet.address);
+
+            // Gera WIF a partir da chave privada atual
+            let wif = generate_wif(&priv_key);
+
+            let data_hora = chrono::Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
+            let content = format!(
+                "Chave privada: {:064x}\nWIF: {}\nEndereço Bitcoin: {}\nData e Hora: {}\n",
+                priv_key, wif, selected_wallet.address, data_hora
+            );
+
+            let file_name = format!("{user_choice}_found.txt");
+
+            write_to_file(
+                &file_name,
+                &content
+            );
+
+            // Salva o último hexadecimal ao finalizar
+            write_last_key(&priv_key, user_choice);
+
+            break;
+        }
 
         // Verifica se 5 minutos se passaram para salvar o último hexadecimal
         if last_save_time.elapsed() >= std::time::Duration::from_secs(300) {
@@ -131,9 +106,6 @@ fn main() {
     println!("Chaves processadas: {}", key_count);
     println!("Tempo total: {:.2} segundos", elapsed_time);
     println!("Chaves por segundo: {:.2}", keys_per_second);
-
-    // Salva o último hexadecimal ao finalizar
-    write_last_key(&priv_key, user_choice);
 
     println!("Processo concluído.");
 }

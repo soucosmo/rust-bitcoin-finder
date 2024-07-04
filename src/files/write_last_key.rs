@@ -1,12 +1,12 @@
 use crate::config::KEYS_PATH;
-use num_bigint::BigInt;
+use num_bigint::BigUint;
 use super::make_dir;
 use std::path::Path;
 use std::io::Write;
 use std::fs::File;
 
 
-pub fn write_last_key(key: &BigInt, user_choice: u8) {
+pub fn write_last_key(key: &BigUint, user_choice: u8) {
     make_dir(KEYS_PATH);
 
     let file = format!(
