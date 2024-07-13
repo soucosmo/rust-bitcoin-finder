@@ -44,8 +44,8 @@ Ferramenta para encontrar bitcoins escrita em Rust. Esta ferramenta é especialm
    Clone o repositório e navegue até o diretório do projeto:
    ```bash
    sh
-   git clone <url_do_repositorio>
-   cd bitcoin-finder
+   git clone https://github.com/soucosmo/rust-bitcoin-finder
+   cd rust-bitcoin-finder
    ```
    
 
@@ -57,6 +57,11 @@ Ferramenta para encontrar bitcoins escrita em Rust. Esta ferramenta é especialm
 
 Agora você está pronto para executar a ferramenta Rust Bitcoin Finder.
 
+Compile o projeto e baixe as dependências:
+```bash
+sh
+cargo run --release
+```
 
 ### Gostou e quer ajudar? Nos envie bitcoin ou dogecoin.
 | Criptomoeda   | Endereço                            |
