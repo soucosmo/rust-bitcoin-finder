@@ -49,19 +49,13 @@ Ferramenta para encontrar bitcoins escrita em Rust. Esta ferramenta é especialm
    ```
    
 
-   Compile o projeto e baixe as dependências:
+   Compile e rode o projeto e baixe as dependências:
    ```bash
    sh
-   cargo build --release
+   cargo run --release
    ```
 
 Agora você está pronto para executar a ferramenta Rust Bitcoin Finder.
-
-Compile o projeto e baixe as dependências:
-```bash
-sh
-cargo run --release
-```
 
 ### Gostou e quer ajudar? Nos envie bitcoin ou dogecoin.
 | Criptomoeda   | Endereço                            |
