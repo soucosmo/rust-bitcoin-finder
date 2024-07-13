@@ -9,6 +9,8 @@ mod wallet;
 mod config;
 mod files;
 mod utils;
+use num_traits::{FromPrimitive, ToPrimitive};
+use num_bigint::BigUint;
 use utils::{
     get_target_hash_from_address,
     verify_address_with_murmur,
@@ -54,7 +56,9 @@ fn main() {
 
     // Temporizador para calcular chaves por segundo
     let start_time = std::time::Instant::now();
-    let mut key_count = 0;
+
+    // Contador de chaves a partir do primitivo i32 com o valor 0
+    let mut key_count = BigUint::from_i32(0).unwrap();
 
     // Temporizador para salvar o último hexadecimal a cada 5 minutos
     let mut last_save_time = std::time::Instant::now();
@@ -66,7 +70,7 @@ fn main() {
     for priv_key in num_iter::range_inclusive(min, selected_wallet.max.clone()) {
         //println!("Contador de chaves: {}", count);
 
-        key_count += 1;
+        key_count += 1u8;
 
         if verify_address_with_murmur(&priv_key, address_target_hash) {
             eprintln!("Correspondência encontrada! Endereço: {}", selected_wallet.address);
@@ -97,12 +101,24 @@ fn main() {
         if last_save_time.elapsed() >= std::time::Duration::from_secs(300) {
             write_last_key(&priv_key, user_choice);
             last_save_time = std::time::Instant::now();
+
+            // Calcula chaves por segundo
+            let elapsed_time = start_time.elapsed().as_secs_f64();
+
+            // provável overflow aqui no futuro para números maiores que (2^64) - 1
+            let keys_per_second = key_count.to_f64().unwrap() / elapsed_time;
+
+            println!("Chaves processadas: {}", key_count);
+            println!("Chaves por segundo: {:.2}", keys_per_second);
         }
     }
 
     // Calcula chaves por segundo
     let elapsed_time = start_time.elapsed().as_secs_f64();
-    let keys_per_second = key_count as f64 / elapsed_time;
+
+    // provável overflow aqui no futuro para números maiores que (2^64) - 1
+    let keys_per_second = key_count.to_f64().unwrap() / elapsed_time;
+
     println!("Chaves processadas: {}", key_count);
     println!("Tempo total: {:.2} segundos", elapsed_time);
     println!("Chaves por segundo: {:.2}", keys_per_second);
