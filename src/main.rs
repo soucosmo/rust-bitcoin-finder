@@ -11,6 +11,7 @@ mod files;
 mod utils;
 use num_traits::{FromPrimitive, ToPrimitive};
 use num_bigint::BigUint;
+use secp256k1::Secp256k1;
 use utils::{
     get_target_hash_from_address,
     verify_address_with_murmur,
@@ -67,12 +68,14 @@ fn main() {
     // assim a comparação irá reduzir algumas etapas.
     let address_target_hash = get_target_hash_from_address(&selected_wallet.address);
 
+    let secp = Secp256k1::new();
+
     for priv_key in num_iter::range_inclusive(min, selected_wallet.max.clone()) {
         //println!("Contador de chaves: {}", count);
 
         key_count += 1u8;
 
-        if verify_address_with_murmur(&priv_key, address_target_hash) {
+        if verify_address_with_murmur(&priv_key, address_target_hash, &secp) {
             eprintln!("Correspondência encontrada! Endereço: {}", selected_wallet.address);
 
             // Gera WIF a partir da chave privada atual
